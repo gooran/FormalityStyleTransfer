@@ -10,7 +10,7 @@ do
     python -m multiprocessing_bpe_encoder \
     --encoder-json encoder.json \
     --vocab-bpe vocab.bpe \
-    --inputs "$TASK/$SPLIT.$LANG" \
+    --inputs "$TASK/$SPLIT/$LANG" \
     --outputs "$TASK/$SPLIT.bpe.$LANG" \
     --workers 60 \
     --keep-empty;
