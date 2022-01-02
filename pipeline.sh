@@ -6,7 +6,7 @@ UPDATE_FREQ=4
 BART_PATH=bart.large/model.pt
 #BART_PATH=checkpoints/checkpoint_best.pt
 
-CUDA_VISIBLE_DEVICES=1 fairseq-train bart/plain-bin \
+CUDA_VISIBLE_DEVICES=1 fairseq-train grammarly-bin \
     --disc-epochs 10 --max-epoch 20 --recon-weight 0.0 --cycle-weight 0.6 \
     --save-dir checkpoints --weight-forward 0.8 --best-checkpoint-metric nll_loss \
     --restore-file $BART_PATH \
