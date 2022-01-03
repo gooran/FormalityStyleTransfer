@@ -63,7 +63,7 @@ class ClassificationCriterion(FairseqCriterion):
 
         accuracy /= 2;
 
-        nll_loss = (torch.ones(1, dtype = torch.double) * (11 - accuracy))
+        nll_loss = ((torch.ones(1, dtype = torch.double).to(device)) * (11 - accuracy))
         sample_size = sample['net_target']['src_tokens'].size(0) if self.sentence_avg else sample['ntokens']
         logging_output = {
             'loss': utils.item(loss.data),
