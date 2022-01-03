@@ -38,7 +38,7 @@ class ClassificationCriterion(FairseqCriterion):
         2) the sample size, which is used as the denominator for the gradient
         3) logging outputs to display while training
         """
-        device = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
+        device = 'cuda' if torch.cuda.is_available() else 'cpu'
         loss = torch.zeros(1, dtype = torch.double).to(device)
         accuracy = 0.0
         if 'plain' in sample:
@@ -63,7 +63,7 @@ class ClassificationCriterion(FairseqCriterion):
 
         accuracy /= 2;
 
-        nll_loss = (torch.ones(1, dtype = torch.double) * (11 - accuracy)).to(device)
+        nll_loss = (torch.ones(1, dtype = torch.double) * (11 - accuracy))
         sample_size = sample['net_target']['src_tokens'].size(0) if self.sentence_avg else sample['ntokens']
         logging_output = {
             'loss': utils.item(loss.data),
